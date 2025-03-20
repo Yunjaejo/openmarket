@@ -41,12 +41,10 @@ public class TokenServiceImpl implements TokenService {
             }
 
             String tokenEmail = jwtProvider.getSubjectFromToken(token);
-            if (!tokenEmail.equals(email)) {
-                throw new IllegalArgumentException("토큰과 이메일이 일치하지 않습니다.");
-            }
         } catch (Exception e) {
             log.warn("토큰 검증 실패: {}", e.getMessage());
         }
+
     }
 
     public void deletePasswordResetToken(String email) {

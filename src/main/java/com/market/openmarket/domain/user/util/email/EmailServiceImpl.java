@@ -20,7 +20,7 @@ public class EmailServiceImpl implements EmailService {
 
     public void sendPasswordResetEmail(String email, String token) {
         try {
-            String resetUrl = baseUrl + "/password-reset?token=" + token;
+            String resetUrl = baseUrl + "/auth/password-reset?token=" + token;
 
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
             simpleMailMessage.setTo(email);
