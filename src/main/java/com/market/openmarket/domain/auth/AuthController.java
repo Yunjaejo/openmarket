@@ -52,12 +52,9 @@ public class AuthController {
     }
 
     @PostMapping("/password-reset/confirm")
-    public ResponseEntity<String> resetPassword(
-            @RequestParam("email") String email,
-            @RequestParam("token") String token,
-            @RequestBody PasswordResetRequestDto requestDto
-    ) {
-        authService.resetPassword(email, token, requestDto);
+    public ResponseEntity<String> resetPassword(@RequestParam("token") String token, @RequestBody PasswordResetRequestDto requestDto) {
+        System.out.println("!!token = " + token);
+        authService.resetPassword(token, requestDto);
         return ResponseEntity.ok("비밀번호가 재설정되었습니다.");
     }
 }

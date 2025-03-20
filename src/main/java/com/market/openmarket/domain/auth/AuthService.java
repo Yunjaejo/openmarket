@@ -14,5 +14,5 @@ public interface AuthService {
 
     void sendPasswordResetEmail(String email);
 
-    void resetPassword(String email, String token, PasswordResetRequestDto requestDto);
+    void resetPassword(String token, PasswordResetRequestDto requestDto);
 }

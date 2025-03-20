@@ -84,12 +84,8 @@ public class AuthServiceImpl implements AuthService {
         emailService.sendPasswordResetEmail(email, token);
     }
 
-    public void resetPassword(String email, String token, PasswordResetRequestDto requestDto) {
-        userValidator.checkEmailExists(email);
-        if (!requestDto.getNewPwd().equals(requestDto.getConfirmPwd())) {
-            throw new IllegalArgumentException("비밀번호를 다시 입력해주세요.");
-        }
-
+    public void resetPassword(String token, PasswordResetRequestDto requestDto) {
+        String email = jwtProvider.getSubjectFromToken(token);
         tokenService.validatePasswordResetToken(email, token);
 
         String hashedPwd = passwordEncoder.hash(requestDto.getNewPwd());

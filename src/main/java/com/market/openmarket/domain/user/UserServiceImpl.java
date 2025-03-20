@@ -3,7 +3,6 @@ package com.market.openmarket.domain.user;
 import com.market.openmarket.common.dto.UserResponseDto;
 import com.market.openmarket.common.util.UserValidator;
 import com.market.openmarket.domain.auth.dto.UserSignUpRequestDto;
-import com.market.openmarket.domain.auth.util.bcrypt.PasswordEncoder;
 import com.market.openmarket.domain.user.dto.UserUpdateRequestDto;
 import com.market.openmarket.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +16,6 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     private final UserValidator userValidator;
-
-    private final PasswordEncoder passwordEncoder;
 
     @Transactional(readOnly = true)
     public User findByIdOrFail(Long id) {
